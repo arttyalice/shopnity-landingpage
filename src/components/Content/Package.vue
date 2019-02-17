@@ -1,16 +1,16 @@
 <template>
   <div class="layout-container">
     <el-row :gutter="24" justify="center" align="middle" class="no-margin">
-      <el-col :xs="24" :sm="12" :md="12" :lg="12" :xl="12">
+      <el-col :xs="24" :sm="10" :md="10" :lg="10" :xl="10">
         <img src="" alt="">
       </el-col>
-      <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6" style="min-height: 100px;">
-        <span v-for="(item, index) in descBasic" :key="index">
-          
-        </span>
+      <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8" style="min-height: 100px;">
+        <div v-for="(item, index) in !isPro ? descBasic : descPro" :key="index">
+          <span v-html="item"></span>
+        </div>
       </el-col>
-      <el-col :xs="12" :sm="6" :md="6" :lg="6" :xl="6" style="min-height: 100px;">
-        <el-button type="primary" class="gredient-button">สมัครระบบฟรี ตลอดไป</el-button>
+      <el-col :xs="24" :sm="6" :md="6" :lg="6" :xl="6" style="min-height: 100px;">
+        <el-button type="primary" :class="!isPro ? 'gredient-button' : 'gredient-button-pro'">{{!isPro ? 'สมัครระบบฟรี ตลอดไป' : 'สมัครวันนี้ ใช้งานฟรี 15 วัน'}}</el-button>
       </el-col>
     </el-row>
     <!-- Package list -->
@@ -61,19 +61,22 @@ export default {
     return {
       isPro: false,
       descBasic: [
-        <span class="package-title-text">สมัครวันนี้ ฟรีทันที 50 ออร์เดอร์</span>,
-        <span class="package-title-text">สมัครวันนี้ ฟรีทันที 50 ออร์เดอร์</span>,
-        <span class="package-title-text">สมัครวันนี้ ฟรีทันที 50 ออร์เดอร์</span>,
-        <span class="package-title-text">สมัครวันนี้ ฟรีทันที 50 ออร์เดอร์</span>
-        // '- ใช้งานฟรีตลอดไป',
-        // '- ไม่จำกัดฟีเจอร์',
-        // '- ขายของครบเครื่องทุกฟังก์ชัน'
+        '<span class="package-title-text">สมัครวันนี้ ฟรีทันที 50 ออร์เดอร์</span>',
+        '<span class="package-title-text">- ใช้งานฟรีตลอดไป</span>',
+        '<span class="package-title-text">- ไม่จำกัดฟีเจอร์</span>',
+        '<span class="package-title-text">- ขายของครบเครื่องทุกฟังก์ชัน</span>'
       ],
       descPro: [
-        'สมัครวันนี้ ฟรีทันที 50 ออร์เดอร์',
-        '- ใช้งานฟรีตลอดไป',
-        '- ไม่จำกัดฟีเจอร์',
-        '- ขายของครบเครื่องทุกฟังก์ชัน'
+        '<span class="package-title-head-pro">Shipnity Pro มีอะไรพิเศษกว่า?</span>',
+        '- <span class="package-title-text-pro">ระบบ POS ขายของหน้าร้าน</span>',
+        '- <span class="package-title-text-pro">ประวัติการสั่งซื้อ</span>ของลูกค้าแต่ละคน',
+        '- <span class="package-title-text-pro">ต้นทุนสินค้า</span>เปลี่ยนตามล็อต',
+        '- <span class="package-title-text-pro">ประวัติ Supplier</span>ทั้งรายการขายและรายการสั่งซื้อ',
+        '- <span class="package-title-text-pro">ทำออเดอร์อย่างเป็นระบบ</span>',
+        '- <span>(1.เปิดออเดอร์ 2.ตรวจสอบการแจ้งเตือน 3.แพ็คของ)</span>',
+        '- ยิงบาร์โค็ดสินค้าเพื่อ <span class="package-title-text-pro">เช็คของก่อนแพ็คส่ง</span> ป้องกันการตกหล่นหรือหยิบผิด',
+        '- <span class="package-title-text-pro">ระบบคืนสินค้า/สินค้าชำรุด</span>',
+        '- <span class="package-title-text-pro">รายงาน Cash Flow</span> ของร้าน'
       ],
       basic: [
         {
@@ -279,7 +282,7 @@ export default {
 
   .layout-container {
     background-color: white;
-    width: 100%;
+    max-width: 100%;
     margin: 20px 0 0 0;
     padding: 24px 0 24px 0;
   }
@@ -289,24 +292,44 @@ export default {
     color: rgb(0, 146, 127);
   }
 
+  .package-title-head-pro {
+    color: blue;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .package-title-text-pro {
+    color: #009df8;
+  }
+
   .gredient-button {
     background-image: linear-gradient(#00d6cb, #009df8);
     border: none;
-  }
-  
-  .gredient-button:hover {
-    background-image: linear-gradient(#00e2d7, #3eb8ff);
-    background-position: left right;
-  }
 
-  .gredient-button:active {
-    background-image: linear-gradient(#00a59d, #007dc5);
-    background-position: left right;
+    &:hover {
+      background-image: linear-gradient(#00e2d7, #3eb8ff);
+    }
+    &:active {
+      background-image: linear-gradient(#00d6cb, #009df8);
+    }
+    &:focus {
+      background-image: linear-gradient(#00d6cb, #009df8);
+    }
   }
   
-  .gredient-button:focus {
-    background-image: linear-gradient(#00a59d, #007dc5);
-    background-position: left right;
+  .gredient-button-pro {
+    background-image: linear-gradient(rgb(31, 46, 255), #009df8);
+    border: none;
+
+    &:hover {
+      background-image: linear-gradient(#0063f8, #3eb8ff);
+    }
+    &:active {
+      background-image: linear-gradient(rgb(31, 46, 255), #009df8);
+    }
+    &:focus {
+      background-image: linear-gradient(rgb(31, 46, 255), #009df8);
+    }
   }
   
   .package-card {

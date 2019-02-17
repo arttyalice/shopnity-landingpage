@@ -1,4 +1,4 @@
-# front-end
+# Shopnity Landing Page
 
 ## Project setup
 ```
