@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-container">
+  <div class="layout-container" id="top-of-content">
     <el-row :gutter="24" justify="center" align="middle" class="no-margin">
       <el-col :xs="24" :sm="10" :md="10" :lg="10" :xl="10">
         <img src="" alt="">
@@ -43,7 +43,7 @@
           รุ่นธรรมดา
         </span>
         <label class="switch">
-          <input type="checkbox" v-model="isPro" checked>
+          <input @click="scrollToTop" type="checkbox" v-model="isPro" checked>
           <span class="slider round"></span>
         </label>
         <span class="text-isPro" :style="isPro ? 'color: #009df8;' : ''">
@@ -211,6 +211,11 @@ export default {
         },
       ]
     }
+  },
+  methods: {
+    scrollToTop () {
+      document.getElementById('top-of-content').scrollIntoView({behavior: "smooth", block: "start", inline: "start"});;
+    }
   }
 };
 </script>
@@ -293,7 +298,7 @@ export default {
   }
 
   .package-title-head-pro {
-    color: blue;
+    color: #3366FF;
     font-size: 18px;
     font-weight: bold;
   }
@@ -318,17 +323,17 @@ export default {
   }
   
   .gredient-button-pro {
-    background-image: linear-gradient(rgb(31, 46, 255), #009df8);
+    background-image: linear-gradient(#3399FF, #47bbff);
     border: none;
 
     &:hover {
       background-image: linear-gradient(#0063f8, #3eb8ff);
     }
     &:active {
-      background-image: linear-gradient(rgb(31, 46, 255), #009df8);
+      background-image: linear-gradient(#3399FF, #47bbff);
     }
     &:focus {
-      background-image: linear-gradient(rgb(31, 46, 255), #009df8);
+      background-image: linear-gradient(#3399FF, #47bbff);
     }
   }
   
@@ -349,22 +354,45 @@ export default {
   }
 
   .package-buyable-btn {
-    background: none;
+    position: relative;
     background-color: Transparent;
     background-repeat:no-repeat;
-    outline: none;
     font-size: 15px;
     font-weight: bold; 
     color: rgb(0, 146, 127);
     border: rgb(0, 146, 127) 1px solid;
     border-radius: 17px;
     padding: 7px 45px;
-    // box-shadow: 0px 3px 3px #888888;
+    outline: none;
+    background: none;
+    overflow:hidden;
+    z-index: 1;
     cursor: pointer;
+    transition:         0.08s ease-in;
+    -o-transition:      0.08s ease-in;
+    -ms-transition:     0.08s ease-in;
+    -moz-transition:    0.08s ease-in;
+    -webkit-transition: 0.08s ease-in;
 
     &:hover {
-      color: rgb(0, 182, 158);
-    border: rgb(0, 182, 158) 1px solid;
+      color: white;
+      border: rgb(0, 182, 158) 1px solid;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      background: rgb(0, 182, 158);
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 100%;
+      z-index: -1;
+      -webkit-transition: top 0.09s ease-in;
+    }
+
+    &:hover:before {
+      top: 0;
     }
   }
 
