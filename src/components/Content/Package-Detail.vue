@@ -1,6 +1,6 @@
 <template>
-  <div class="layout-container">
-    <el-row :gutter="24" style="padding: 10px;" justify="center" align="middle" class="no-margin">
+  <div id="listing-header-point" class="layout-container">
+    <el-row id="listing-header" :gutter="24" style="padding: 10px;" justify="center" align="middle" class="no-margin">
       <el-col :xs="9" :sm="9" :md="9" :lg="9" :xl="9">
         <img src="" alt="">
       </el-col>
@@ -142,7 +142,7 @@ export default {
           title: 'สะดวกแม่ค้า',
           list: [
             {title: 'เชื่อมต่อกับ SCG Express', got1: true, got2: true, got3: true},
-            {title: 'เชื่อมต่อ APIs ระบบภายนอก (Wordpress,Woocommerce ฯลฯ)', got1: false, got2: true, got3: true},
+            {title: 'เชื่อมต่อ APIs ระบบภายนอก (Wordpress, Woocommerce ฯลฯ)', got1: false, got2: true, got3: true},
             {title: 'บริการ Drop-off กับไปรษณีย์ไทย', got1: true, got2: true, got3: true},
             {title: 'เติมเครดิตในระบบ (แจ้งพัสดุอัตโนมัติ)', isNotBorder: true, isHtml: true, html: '<span>1.5 บาท/70ตัวอักษร</span><span class="a-red-chip">ถูกที่สุด</span>'},
           ]
@@ -156,14 +156,31 @@ export default {
         }
       ]
     }
+  },
+  created () {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  destroyed() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
+  methods: {
+    handleScroll () {
+      var point = document.getElementById("listing-header-point");
+      var item = document.getElementById('listing-header')
+      if (window.pageYOffset > point.offsetTop) {
+        item.classList.add("sticky");
+      } else if (window.pageYOffset < point.offsetTop) {
+        item.classList.remove("sticky");
+      }
+    }
   }
 };
 </script>
 
 <style lang="scss">
   .layout-container {
+    position: relative;
     background-color: white;
-    width: 100%;
     margin: 20px 0 0 0;
     padding: 24px 10px 24px 10px;
   }
@@ -214,5 +231,13 @@ export default {
     font-size: 12px;
     padding: 2px 15px 2px 15px;
     margin-left: 24px;
+  }
+
+  .sticky {
+    position: fixed;
+    background-color: white;
+    z-index: 1;
+    width: 95%;
+    top: 0;
   }
 </style>

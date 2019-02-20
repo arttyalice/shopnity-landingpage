@@ -1,11 +1,11 @@
 <template>
-  <el-container>
-    <el-main class="content-layout">
+  <div>
+    <div class="content-layout">
       <Title />
       <Package />
       <PackageDetail />
-    </el-main>
-  </el-container>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -26,7 +26,7 @@
 <style lang="scss">
   .content-layout {
     background-color: #efefef;
-    padding: 20px;
+    padding: 0 20px 20px 20px;
   }
 </style>
 

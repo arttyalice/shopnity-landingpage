@@ -287,7 +287,6 @@ export default {
 
   .layout-container {
     background-color: white;
-    max-width: 100%;
     margin: 20px 0 0 0;
     padding: 24px 0 24px 0;
   }
