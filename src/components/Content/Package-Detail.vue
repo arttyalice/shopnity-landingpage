@@ -150,7 +150,7 @@ export default {
         {
           title: 'Support พลังแม่ค้า',
           list: [
-            {title: 'การช่วยเหลือทางเทคนิค', isNotBorder: false, isHtml: true, html: '<span style="border-bottom: 1px #ccc solid; padding-bottom: 7px; line-height: 40px;">ทุกแพ็คเกจ จะได้ความช่วยเหลือทุกช่องทาง ทั้ง Line@ FB และเบอร์โทร</span>'},
+            {title: 'การช่วยเหลือทางเทคนิค', isNotBorder: false, isHtml: true, html: '<div style="border-bottom: 1px #ccc solid; display: inline-block;"><span style="padding-bottom: 7px; line-height: 40px;">ทุกแพ็คเกจ จะได้ความช่วยเหลือทุกช่องทาง ทั้ง Line@ FB และเบอร์โทร</span></div>'},
             {title: 'ความปลอดภัยมาตรฐานสากลโลก', isNotBorder: true, isHtml: true, html: '<span style="padding-bottom: 7px; line-height: 40px;">ข้อมูลปลอดภัยด้วยมาตรฐานเทคโนโลยีระดับโลก</span>'},
           ]
         }
