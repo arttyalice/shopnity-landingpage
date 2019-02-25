@@ -1,19 +1,21 @@
 <template>
   <div id="listing-header-point" class="layout-container">
-    <el-row id="listing-header" :gutter="24" style="padding: 10px;" justify="center" align="middle" class="no-margin">
-      <el-col :xs="9" :sm="9" :md="9" :lg="9" :xl="9">
-        <img src="" alt="">
-      </el-col>
-      <el-col :span="5" class="center-text" style="font-size: 18px; color: #00d6cb;">
-        เริ่มต้น
-      </el-col>
-      <el-col :span="5" class="center-text" style="font-size: 18px; color: #009df8;">
-        รุ่นธรรมดา
-      </el-col>
-      <el-col :span="5" class="center-text" style="font-size: 18px; color: rgb(31, 46, 255);">
-        รุ่น Pro
-      </el-col>
-    </el-row>
+    <div id="fixed-parent" style="width: 100%;">
+      <el-row id="listing-header" :gutter="24" style="padding: 10px;" justify="center" align="middle" class="no-margin">
+        <el-col :xs="9" :sm="9" :md="9" :lg="9" :xl="9">
+          <img src="" alt="">
+        </el-col>
+        <el-col :span="5" class="center-text" style="font-size: 18px; color: #00d6cb;">
+          เริ่มต้น
+        </el-col>
+        <el-col :span="5" class="center-text" style="font-size: 18px; color: #009df8;">
+          รุ่นธรรมดา
+        </el-col>
+        <el-col :span="5" class="center-text" style="font-size: 18px; color: rgb(31, 46, 255);">
+          รุ่น Pro
+        </el-col>
+      </el-row>
+    </div>
     <el-row :gutter="24" style="padding: 10px;" justify="center" align="middle" class="no-margin">
       <el-col :span="9" style="color: Black; font-size: 36px; font-weight: 300;">
         Key<br>Feature
@@ -159,14 +161,21 @@ export default {
   },
   created () {
     window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('resize', this.onresize);
+    this.onresize()
   },
   destroyed() {
     window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
+    onresize () {
+      var parent = document.getElementById("fixed-parent");
+      var { style } = document.getElementById('listing-header');
+      style.width = `${parent.clientWidth}px`;
+    },
     handleScroll () {
       var point = document.getElementById("listing-header-point");
-      var item = document.getElementById('listing-header')
+      var item = document.getElementById('listing-header');
       if (window.pageYOffset > point.offsetTop) {
         item.classList.add("sticky");
       } else if (window.pageYOffset < point.offsetTop) {
@@ -237,7 +246,7 @@ export default {
     position: fixed;
     background-color: white;
     z-index: 1;
-    width: 95%;
+    width: inherit;
     top: 0;
   }
 </style>
