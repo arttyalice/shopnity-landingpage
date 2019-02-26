@@ -1,7 +1,7 @@
 <template>
   <div>
     <div 
-      style="text-align: left; line-height: 60px; font-size: 36px; font-weight: bold; color: rgb(77, 97, 162); padding: 0 20px;"
+      style="text-align: left; line-height: 60px; font-size: 36px; font-weight: bold; color: #617AB7; padding: 0 20px;"
     >
       Shipnity
     </div>

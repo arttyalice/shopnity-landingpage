@@ -18,7 +18,7 @@
     </div>
     <el-row :gutter="24" style="padding: 10px;" justify="center" align="middle" class="no-margin">
       <el-col :span="9" style="color: Black; font-size: 36px; font-weight: 300;">
-        Key<br>Feature
+        Key<br>Features
       </el-col>
       <el-col :span="5" class="center-text">
         <img src="" alt="">
@@ -51,13 +51,13 @@
         </template>
         <template v-else>
           <el-col :span="5" class="center-text">
-            <i :class="item.got1 ? 'el-icon-check a-detail-symbol' : 'el-icon-close a-detail-symbol-not'"></i>
+            <i :class="item.got1 ? 'el-icon-check a-detail-symbol' : 'el-icon-minus a-detail-symbol'"></i>
           </el-col>
           <el-col :span="5" class="center-text">
-            <i :class="item.got2 ? 'el-icon-check a-detail-symbol' : 'el-icon-close a-detail-symbol-not'"></i>
+            <i :class="item.got2 ? 'el-icon-check a-detail-symbol' : 'el-icon-minus a-detail-symbol'"></i>
           </el-col>
           <el-col :span="5" class="center-text">
-            <i :class="item.got3 ? 'el-icon-check a-detail-symbol' : 'el-icon-close a-detail-symbol-not'"></i>
+            <i :class="item.got3 ? 'el-icon-check a-detail-symbol' : 'el-icon-minus a-detail-symbol'"></i>
           </el-col>
         </template>
       </el-row>
@@ -137,7 +137,7 @@ export default {
             {title: 'การชำระเงินผ่านบัตรเครดิต', got1: true, got2: true, got3: true},
             {title: 'ชำระเงินผ่านธนาคาร', got1: true, got2: true, got3: true},
             {title: 'บริการเก็บเงินปลายทาง COD', got1: true, got2: true, got3: true},
-            {title: 'บริการเก็บเงินปลายทาง COD', got1: true, got2: true, got3: true},
+            {title: 'ระบบสะสมแต้ม', got1: false, got2: false, got3: true},
           ]
         },
         {
@@ -146,7 +146,8 @@ export default {
             {title: 'เชื่อมต่อกับ SCG Express', got1: true, got2: true, got3: true},
             {title: 'เชื่อมต่อ APIs ระบบภายนอก (Wordpress, Woocommerce ฯลฯ)', got1: false, got2: true, got3: true},
             {title: 'บริการ Drop-off กับไปรษณีย์ไทย', got1: true, got2: true, got3: true},
-            {title: 'เติมเครดิตในระบบ (แจ้งพัสดุอัตโนมัติ)', isNotBorder: true, isHtml: true, html: '<span>1.5 บาท/70ตัวอักษร</span><span class="a-red-chip">ถูกที่สุด</span>'},
+            {title: 'เติมเครดิตในระบบ (แจ้งพัสดุอัตโนมัติ)', isHtml: true, html: '<div class="html-listing-detail" style="border-bottom: 1px #ccc solid; display: inline-block;"><span>1.5 บาท/70ตัวอักษร</span><span class="a-red-chip">ถูกที่สุด</span></div>'},
+            {title: ' ค่าธรรมเนียมบัตรเครดิต', isNotBorder: true, isHtml: true, html: '<span>3.15 %</span><span class="a-red-chip">ถูกที่สุด</span>'},
           ]
         },
         {
@@ -240,6 +241,7 @@ export default {
     font-size: 12px;
     padding: 2px 15px 2px 15px;
     margin-left: 24px;
+    line-height: 30px;
   }
 
   .sticky {
@@ -248,5 +250,17 @@ export default {
     z-index: 1;
     width: inherit;
     top: 0;
+  }
+
+  .html-listing-detail {
+    border-bottom: 1px #ccc solid;
+    display: inline-block;
+    width: 477px;
+  }
+
+  @media only screen and (max-width: 930px) {
+    .html-listing-detail {
+      width: 100%;
+    }
   }
 </style>

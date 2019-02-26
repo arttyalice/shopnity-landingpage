@@ -1,11 +1,11 @@
 <template>
   <span>
-    <el-row>
+    <el-row style="padding-top: 24px;">
       <el-col>
-        <span class="title-text">ราคาแพ็คเก็จ</span> <span class="title-sub-text">(เลือกให้ดีที่สุดฉบับธุรกิจคุณ)</span> 
+        <span class="title-text">ราคาแพ็คเก็จ</span> <span class="title-sub-text">(เลือกได้เหมาะตามขนาดธุรกิจคุณ)</span> 
       </el-col>
     </el-row>
-    <el-row>
+    <el-row style="padding-bottom: 18px;">
       <el-col>
         <span class="title-desc-text">
           * ตัวแทนจำหน่ายของร้าน สามารถมี user ของตัวเองเพื่อเข้ามาสร้างออเดอร์, เช็คสต็อค, ดูประวัติ, ยอดขายของตัวเองได้

@@ -1,6 +1,6 @@
 <template>
   <div class="layout-container" id="top-of-content">
-    <el-row :gutter="24" justify="center" align="middle" class="no-margin">
+    <el-row type="flex" :gutter="24" justify="center" align="middle" class="no-margin">
       <el-col :xs="24" :sm="10" :md="10" :lg="10" :xl="10">
         <img src="" alt="">
       </el-col>
@@ -9,7 +9,7 @@
           <span v-html="item"></span>
         </div>
       </el-col>
-      <el-col :xs="24" :sm="6" :md="6" :lg="6" :xl="6" style="min-height: 100px;">
+      <el-col :xs="24" :sm="6" :md="6" :lg="6" :xl="6" style="min-height: 100px; display: contents;">
         <el-button type="primary" :class="!isPro ? 'gredient-button' : 'gredient-button-pro'">{{!isPro ? 'สมัครระบบฟรี ตลอดไป' : 'สมัครวันนี้ ใช้งานฟรี 15 วัน'}}</el-button>
       </el-col>
     </el-row>
@@ -23,15 +23,18 @@
           <div style="font-size: 17px; color: black;">
             {{item.price}} ฿
           </div>
-          <div>
-            <span style="font-size: 12px; color: white; background-color: #555; padding: 5px; margin: 0 8px;" v-for="(pitem, ind) in item.pricePack" :key="ind">{{pitem}}</span>
+          <div style="margin-top: 10px;">
+            <span :class="!isPro ? 'round-price-pack' : 'round-price-pack pro'" v-for="(pitem, ind) in item.pricePack" :key="ind">{{pitem}}</span>
           </div>
           <div style="height: 20px; padding: 28px 0 15px 0;">
-            <button v-if="item.isBuyable" class="package-buyable-btn">
+            <button v-if="item.isBuyable" :class="!isPro ? 'package-buyable-btn' : 'package-buyable-btn-pro'">
               Buy
             </button>
+            <button v-else :class="!isPro ? 'package-buyable-btn' : 'package-buyable-btn-pro'">
+              สมัครเลย
+            </button>
           </div>
-          <div v-for="(dItem, index) in item.detail" :key="index" class="package-detail-list">
+          <div v-for="(dItem, index) in item.detail" :key="index" :class="!isPro ? 'package-detail-list' : 'package-detail-list pro'">
             {{dItem}}
           </div>
         </div>
@@ -63,7 +66,7 @@ export default {
       descBasic: [
         '<span class="package-title-text">สมัครวันนี้ ฟรีทันที 50 ออร์เดอร์</span>',
         '<span class="package-title-text">- ใช้งานฟรีตลอดไป</span>',
-        '<span class="package-title-text">- ไม่จำกัดฟีเจอร์</span>',
+        '<span class="package-title-text">- ใช้งานง่ายที่สุด</span>',
         '<span class="package-title-text">- ขายของครบเครื่องทุกฟังก์ชัน</span>'
       ],
       descPro: [
@@ -88,7 +91,7 @@ export default {
           ],
           detail: [
             '50 ออเดอร์/เดือน',
-            '1 Admin',
+            '1 User',
             '1 คลังสินค้า',
             '0 ตัวแทนจำหน่าย',
             'ไม่จำกัด รายการสินค้า'
@@ -104,7 +107,7 @@ export default {
           ],
           detail: [
             '150 ออเดอร์/เดือน',
-            '3 Admin',
+            '3 User',
             '1 คลังสินค้า',
             '4 ตัวแทนจำหน่าย',
             'ไม่จำกัด รายการสินค้า'
@@ -120,7 +123,7 @@ export default {
           ],
           detail: [
             '300 ออเดอร์/เดือน',
-            '6 Admin',
+            '6 User',
             '1 คลังสินค้า',
             '8 ตัวแทนจำหน่าย',
             'ไม่จำกัด รายการสินค้า'
@@ -137,7 +140,7 @@ export default {
           ],
           detail: [
             'ไม่จำกัด ออเดอร์/เดือน',
-            '10 Admin',
+            '10 User',
             '1 คลังสินค้า',
             '10 ตัวแทนจำหน่าย',
             'ไม่จำกัด รายการสินค้า'
@@ -155,7 +158,7 @@ export default {
           ],
           detail: [
             'ไม่จำกัด ออเดอร์/เดือน',
-            '10 Admin',
+            '10 User',
             '1 คลังสินค้า',
             '0 ตัวแทนจำหน่าย',
             'ไม่จำกัด รายการสินค้า'
@@ -171,7 +174,7 @@ export default {
           ],
           detail: [
             'ไม่จำกัด ออเดอร์/เดือน',
-            '15 Admin',
+            '15 User',
             '2 คลังสินค้า',
             '15 ตัวแทนจำหน่าย',
             'ไม่จำกัด รายการสินค้า'
@@ -187,7 +190,7 @@ export default {
           ],
           detail: [
             'ไม่จำกัด ออเดอร์/เดือน',
-            '20 Admin',
+            '20 User',
             '3 คลังสินค้า',
             '30 ตัวแทนจำหน่าย',
             'ไม่จำกัด รายการสินค้า'
@@ -203,7 +206,7 @@ export default {
           ],
           detail: [
             'ไม่จำกัด ออเดอร์/เดือน',
-            'ไม่จำกัด Admin',
+            'ไม่จำกัด User',
             'ไม่จำกัด คลังสินค้า',
             'ไม่จำกัด ตัวแทนจำหน่าย',
             'ไม่จำกัด รายการสินค้า'
@@ -245,7 +248,7 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: linear-gradient(#00d6cb, #009df8);
+    background-color: #25A9DC;
     -webkit-transition: .4s;
     transition: .4s;
   }
@@ -263,7 +266,7 @@ export default {
   }
 
   input:checked + .slider {
-    background-image: linear-gradient(#00d6cb, #009df8);
+    background-color: #25A9DC;
   }
 
   input:focus + .slider {
@@ -293,31 +296,33 @@ export default {
 
   .package-title-text {
     min-height: 100px;
-    color: rgb(0, 146, 127);
+    color: #0AA699;
   }
 
   .package-title-head-pro {
-    color: #3366FF;
+    color: #337AB7;
     font-size: 18px;
     font-weight: bold;
   }
 
   .package-title-text-pro {
-    color: #009df8;
+    color: #337AB7;
   }
 
   .gredient-button {
-    background-image: linear-gradient(#00d6cb, #009df8);
+    font-family: 'Prompt', Helvetica, Arial, sans-serif;
+    background-color: #25A9DC;
     border: none;
 
     &:hover {
-      background-image: linear-gradient(#00e2d7, #3eb8ff);
+      background-color: #25A9DC;
+      background-color: lighten($color: #25A9DC, $amount: 5);
     }
     &:active {
-      background-image: linear-gradient(#00d6cb, #009df8);
+      background-color: darken($color: #25A9DC, $amount: 5);
     }
     &:focus {
-      background-image: linear-gradient(#00d6cb, #009df8);
+      background-color: darken($color: #25A9DC, $amount: 0);
     }
   }
   
@@ -349,9 +354,56 @@ export default {
   .package-detail-list {
     margin: 15px 20px 15px 20px;
     border-bottom: 1px solid #ccc;
-    color: rgb(0, 146, 127);
+    color: #0AA699;
+
+    &.pro {
+      color: #337AB7;
+    }
   }
 
+  .package-buyable-btn-pro {
+    position: relative;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    font-size: 15px;
+    font-weight: bold; 
+    color: #25A9DC;
+    border: #25A9DC 1px solid;
+    border-radius: 17px;
+    padding: 7px 45px;
+    outline: none;
+    background: none;
+    overflow:hidden;
+    z-index: 1;
+    cursor: pointer;
+    transition:         0.08s ease-in;
+    -o-transition:      0.08s ease-in;
+    -ms-transition:     0.08s ease-in;
+    -moz-transition:    0.08s ease-in;
+    -webkit-transition: 0.08s ease-in;
+
+    &:hover {
+      color: white;
+      border: #25A9DC 1px solid;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      background: #25A9DC;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 100%;
+      z-index: -1;
+      -webkit-transition: top 0.09s ease-in;
+    }
+
+    &:hover:before {
+      top: 0;
+    }
+  }
+  
   .package-buyable-btn {
     position: relative;
     background-color: Transparent;
@@ -397,5 +449,18 @@ export default {
 
   .text-isPro {
     margin: 0 20px;
+  }
+
+  .round-price-pack {
+    font-size: 12px;
+    color: white;
+    background-color: #0AA699;
+    padding: 5px 10px;
+    margin: 0 8px;
+    border-radius: 17px;
+
+    &.pro {
+      background: #25A9DC;
+    }
   }
 </style>
