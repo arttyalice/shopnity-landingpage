@@ -1,8 +1,8 @@
 <template>
   <div class="layout-container" id="top-of-content">
-    <el-row type="flex" :gutter="24" justify="center" align="middle" class="no-margin">
+    <el-row type="flex" :gutter="24" justify="center" align="middle" class="container-res">
       <el-col :xs="24" :sm="10" :md="10" :lg="10" :xl="10">
-        <img src="" alt="">
+        <img src="@/assets/uncle.png" alt="" style="width: 100%;">
       </el-col>
       <el-col :xs="24" :sm="8" :md="8" :lg="8" :xl="8" style="min-height: 100px;">
         <div v-for="(item, index) in !isPro ? descBasic : descPro" :key="index">
@@ -224,8 +224,15 @@ export default {
 </script>
 
 <style lang="scss">
-  .no-margin {
+  .container-res {
     margin: 0!important;
+  }
+
+  @media only screen and (max-width: 705px) {
+    .container-res {
+      display: block;
+      text-align: center;
+    }
   }
 
   .switch {

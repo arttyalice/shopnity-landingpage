@@ -21,13 +21,13 @@
         Key<br>Features
       </el-col>
       <el-col :span="5" class="center-text">
-        <img src="" alt="">
+        <img src="@/assets/whale_starter.jpg" alt="" style="width: 100%;">
       </el-col>
       <el-col :span="5" class="center-text">
-        <img src="" alt="">
+        <img src="@/assets/whale_casual.jpg" alt="" style="width: 100%;">
       </el-col>
       <el-col :span="5" class="center-text">
-        <img src="" alt="">
+        <img src="@/assets/whale_pro.jpg" alt="" style="width: 100%;">
       </el-col>
     </el-row>
 
