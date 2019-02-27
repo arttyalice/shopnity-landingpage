@@ -28,7 +28,7 @@ export default {
     margin: 0 0 0 20px;
   }
   .title-sub-text {
-    color: rgb(199, 32, 32);
+    color: #337AB7;
     font-size: 14px;
     margin: 0 0 0 10px;
   }

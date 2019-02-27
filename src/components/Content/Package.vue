@@ -327,6 +327,7 @@ export default {
   }
   
   .gredient-button-pro {
+    font-family: 'Prompt', Helvetica, Arial, sans-serif;
     background-image: linear-gradient(#3399FF, #47bbff);
     border: none;
 
@@ -362,6 +363,7 @@ export default {
   }
 
   .package-buyable-btn-pro {
+    font-family: 'Prompt', Helvetica, Arial, sans-serif;
     position: relative;
     background-color: Transparent;
     background-repeat:no-repeat;
@@ -405,6 +407,7 @@ export default {
   }
   
   .package-buyable-btn {
+    font-family: 'Prompt', Helvetica, Arial, sans-serif;
     position: relative;
     background-color: Transparent;
     background-repeat:no-repeat;
